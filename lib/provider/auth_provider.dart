@@ -87,39 +87,39 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future googleAuth(
-      {required Map data,
-      required BuildContext context,
-      required WidgetRef ref}) async {
-    try {
-      googleAuthState = StateEnum.loading;
-      notifyListeners();
-      final Response response = await DioConfig().dioServe(
-        hasAuth: false,
-        url: APIs.googleAuth,
-        hasBody: true,
-        httpMethod: HttpMethod.post,
-        data: data,
-      );
-      SharedPrefrenceServices.setTokens(
-          accessToken: response.data["access_token"],
-          refreshToken: response.data["refresh_token"]);
-      // SharedPrefrenceServices.setUserID(response.data["user"]['id']);
-      await DependencyResolver.resolve(ref: ref);
-      googleAuthState = StateEnum.success;
-      notifyListeners();
-    } catch (e) {
-      log(e.toString());
+  // Future googleAuth(
+  //     {required Map data,
+  //     required BuildContext context,
+  //     required WidgetRef ref}) async {
+  //   try {
+  //     googleAuthState = StateEnum.loading;
+  //     notifyListeners();
+  //     final Response response = await DioConfig().dioServe(
+  //       hasAuth: false,
+  //       url: APIs.googleAuth,
+  //       hasBody: true,
+  //       httpMethod: HttpMethod.post,
+  //       data: data,
+  //     );
+  //     SharedPrefrenceServices.setTokens(
+  //         accessToken: response.data["access_token"],
+  //         refreshToken: response.data["refresh_token"]);
+  //     // SharedPrefrenceServices.setUserID(response.data["user"]['id']);
+  //     await DependencyResolver.resolve(ref: ref);
+  //     googleAuthState = StateEnum.success;
+  //     notifyListeners();
+  //   } catch (e) {
+  //     log(e.toString());
 
-      CustomToast.showToast(
-        context,
-        message: 'Something went wrong, please try again.',
-        toastType: ToastType.failure,
-      );
-      googleAuthState = StateEnum.failed;
-      notifyListeners();
-    }
-  }
+  //     CustomToast.showToast(
+  //       context,
+  //       message: 'Something went wrong, please try again.',
+  //       toastType: ToastType.failure,
+  //     );
+  //     googleAuthState = StateEnum.failed;
+  //     notifyListeners();
+  //   }
+  // }
 
   Future signInWithEmailAndPassword(
       {required String email,

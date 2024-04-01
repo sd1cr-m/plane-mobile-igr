@@ -50,3 +50,5 @@ key.properties
 AndroidManifest.xml
 pubspec.lock
 
+# FVM Version Cache
+.fvm/

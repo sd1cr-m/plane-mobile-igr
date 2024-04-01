@@ -6,9 +6,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:plane/Authentication/google_sign_in.dart';
 import 'package:plane/config/config_variables.dart';
 import 'package:plane/mixins/widget_state_mixin.dart';
 import 'package:plane/utils/custom_toast.dart';
@@ -334,8 +332,10 @@ class _SignInScreenState extends ConsumerState<SignInScreen>
                           const SizedBox(
                             height: 30,
                           ),
-                          (Platform.isIOS && Config.googleServerClientId == null) ||
-                                  (Platform.isAndroid && Config.googleClientId == null)
+                          (Platform.isIOS &&
+                                      Config.googleServerClientId == null) ||
+                                  (Platform.isAndroid &&
+                                      Config.googleClientId == null)
                               ? Container()
                               : Column(
                                   children: [
@@ -355,8 +355,10 @@ class _SignInScreenState extends ConsumerState<SignInScreen>
                                     ),
                                   ],
                                 ),
-                          (Platform.isIOS && Config.googleServerClientId == null) ||
-                                  (Platform.isAndroid && Config.googleClientId == null)
+                          (Platform.isIOS &&
+                                      Config.googleServerClientId == null) ||
+                                  (Platform.isAndroid &&
+                                      Config.googleClientId == null)
                               ? Container()
                               : (authProvider.googleAuthState ==
                                       StateEnum.loading
@@ -395,71 +397,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen>
                                       textColor: themeProvider
                                           .themeManager.primaryTextColor,
                                       filledButton: false,
-                                      ontap: () async {
-                                        try {
-                                          final user =
-                                              await GoogleSignInApi.logIn();
-                                          if (user == null) {
-                                            return;
-                                          }
-                                          final GoogleSignInAuthentication
-                                              googleAuth =
-                                              await user.authentication;
-                                          ref
-                                              .watch(ProviderList.authProvider)
-                                              .googleAuth(data: {
-                                            "clientId": Config.googleServerClientId,
-                                            "credential": googleAuth.idToken,
-                                            "medium": "google"
-                                          }, context: context, ref: ref).then(
-                                                  (value) {
-                                            if (authProvider.googleAuthState ==
-                                                    StateEnum.success &&
-                                                profileProvider
-                                                        .getProfileState ==
-                                                    StateEnum.success) {
-                                              if (profileProvider
-                                                  .userProfile.isOnboarded!) {
-                                                Navigator.pushAndRemoveUntil(
-                                                  context,
-                                                  (MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const HomeScreen(
-                                                      fromSignUp: false,
-                                                    ),
-                                                  )),
-                                                  (route) => false,
-                                                );
-                                              } else {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) => ref
-                                                            .read(ProviderList
-                                                                .profileProvider)
-                                                            .userProfile
-                                                            .firstName!
-                                                            .isEmpty
-                                                        ? const SetupProfileScreen()
-                                                        : ref
-                                                                .read(ProviderList
-                                                                    .workspaceProvider)
-                                                                .workspaces
-                                                                .isEmpty
-                                                            ? const SetupWorkspace()
-                                                            : const HomeScreen(
-                                                                fromSignUp:
-                                                                    false,
-                                                              ),
-                                                  ),
-                                                );
-                                              }
-                                            }
-                                          });
-                                        } catch (e) {
-                                          log(e.toString());
-                                        }
-                                      },
+                                      ontap: () async {},
                                     )),
                           // const SizedBox(
                           //   height: 15,

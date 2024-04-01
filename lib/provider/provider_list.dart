@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:plane/Authentication/google_sign_in.dart';
 import 'package:plane/config/const.dart';
 import 'package:plane/provider/activity_provider.dart';
 import 'package:plane/provider/auth_provider.dart';
@@ -107,7 +106,6 @@ class ProviderList {
     ref.read(searchIssueProvider).clear();
 
     ref.read(workspaceProvider).clear();
-    GoogleSignInApi.logout();
     SharedPrefrenceServices.instance.clear();
     Const.accessToken = null;
     Const.userId = null;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "297949421988",
+    "project_id": "plane-600bf",
+    "storage_bucket": "plane-600bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297949421988:android:81a1f737db2bc613d8a131",
+        "android_client_info": {
+          "package_name": "com.plane.indogrosir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcAuh2nrRoVMwaLpkI2cuQ13L1K_-DlLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

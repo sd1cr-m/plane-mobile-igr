@@ -54,12 +54,13 @@ class ConfigProvider extends StateNotifier<ConfigModel> {
 }
 
 void initializeEnvs(ConfigsModel data) {
-  Config.googleClientId = data.googleClientId!;
-  Config.googleServerClientId = data.googleServerClientId!;
-  Config.googleIosClientId = data.googleIosClientId!;
-  // Config.reversedGoogleIosClientId = data.reversedGoogleIosClientId!;
-  Config.posthogApiKey = data.posthogApiKey!;
-  Config.posthogHost = data.posthogHost!;
+  //Config.googleClientId = data.googleClientId!;
+  //Config.googleServerClientId = data.googleServerClientId!;
+  //Config.googleIosClientId = data.googleIosClientId!;
+  
+  //Config.reversedGoogleIosClientId = data.reversedGoogleIosClientId!;
+  //Config.posthogApiKey = data.posthogApiKey!;
+  //Config.posthogHost = data.posthogHost!;
   Config.magicLogin = data.magicLogin!;
   Config.emailPasswordLogin = data.emailPasswordLogin!;
   Config.hasUnsplashConfigured = data.hasUnsplashConfigured!;
