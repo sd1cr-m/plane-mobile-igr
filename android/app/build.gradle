@@ -64,6 +64,11 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled = true
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "Plane Indogrosir v${versionName}(${versionCode}).apk"
+            }
+        }
     }
 
     // signingConfigs {
